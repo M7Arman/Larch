@@ -1,13 +1,28 @@
-<!-- Default form login -->
-<form id="login-form" class="text-center border border-light p-5 mx-auto">
-
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  id="login-form"
+  class="text-center border border-light p-5 mx-auto"
+>
   <p class="h4 mb-4">Sign in</p>
 
   <!-- Email -->
-  <input type="email" id="defaultLoginFormEmail" class="form-control mb-4" placeholder="E-mail">
+  <input
+    formControlName="email"
+    type="email"
+    id="defaultLoginFormEmail"
+    class="form-control mb-4"
+    placeholder="E-mail"
+  />
 
   <!-- Password -->
-  <input type="password" id="defaultLoginFormPassword" class="form-control mb-4" placeholder="Password">
+  <input
+    formControlName="password"
+    type="password"
+    id="defaultLoginFormPassword"
+    class="form-control mb-4"
+    placeholder="Password"
+  />
 
   <div class="d-flex justify-content-around">
     <div>
@@ -21,12 +36,12 @@
   </div>
 
   <!-- Sign in button -->
-  <button mdbBtn color="info" block="true" class="my-4" type="submit">Sign in</button>
+  <button [disabled]="!form.valid" mdbBtn color="info" block="true" class="my-4" type="submit">
+    Sign in
+  </button>
 
   <!-- Register -->
-  <p>Not a member?
-    <a href="">Register</a>
-  </p>
+  <p>Not a member? <a href="">Register</a></p>
 
   <!-- Social login -->
   <p>or sign in with:</p>
@@ -47,6 +62,4 @@
     <!-- <i class="fa fa-google"></i> -->
     <mdb-icon icon="google"></mdb-icon>
   </a>
-
 </form>
-<!-- Default form login -->

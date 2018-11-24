@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   public form: FormGroup;
+  public invalidData = false;
 
   constructor(
     private fb: FormBuilder,
@@ -32,8 +33,13 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/home']);
       },
       err => {
-        console.error('Error:', err);
-        // TODO: Show some error message in UI
+        console.error('Error:', this.form.value);
+        this.invalidData = true;
+        this.form.patchValue({
+          email: '',
+          password: ''
+        });
+        // TODO: show error
       }
     );
   }

@@ -12,6 +12,8 @@
     type="email"
     id="defaultLoginFormEmail"
     class="form-control mb-4"
+    [ngClass]="{ 'is-invalid': invalidData }"
+    (focus)="invalidData = false"
     placeholder="E-mail"
   />
 
@@ -21,6 +23,8 @@
     type="password"
     id="defaultLoginFormPassword"
     class="form-control mb-4"
+    [ngClass]="{ 'is-invalid': invalidData }"
+    (focus)="invalidData = false"
     placeholder="Password"
   />
 

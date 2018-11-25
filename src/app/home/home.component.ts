@@ -1,4 +1,6 @@
+import { AuthenticationService } from './../services/AuthenticationService';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  constructor(
+    private authService: AuthenticationService,
+    private router: Router
+  ) {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  public foo() {
+    this.authService.foo().subscribe(arg => console.log(arg));
   }
 
+  public logout() {
+    this.authService.logout();
+    this.router.navigate(['/']);
+  }
 }

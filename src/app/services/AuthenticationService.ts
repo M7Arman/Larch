@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AuthenticationService {
+
   constructor(private http: HttpClient) {}
 
   login(user: User) {
@@ -27,8 +28,12 @@ export class AuthenticationService {
       );
   }
 
+  foo(): any {
+    return this.http.get(`${environment.apiUrl}/products`);
+  }
+
   logout() {
     // remove user from local storage to log user out
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem('larchUser');
   }
 }

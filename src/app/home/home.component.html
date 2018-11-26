@@ -1,5 +1,8 @@
 <p>home works!</p>
-<button (click)="foo()" mdbBtn color="info" block="true" class="my-4" type="submit">Foo</button>
+<button (click)="onFoo()" mdbBtn color="info" block="true" class="my-4" type="submit">Foo</button>
 <button (click)="logout()" mdbBtn color="info" block="true" class="my-4" type="submit">
   Logout
 </button>
+<p id="progressBar">
+  <ngb-progressbar type="info" [max]="maxValue" [value]="progress"></ngb-progressbar>
+</p>

@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthenticationService } from './services/AuthenticationService';
 import { HomeComponent } from './home/home.component';
 import { AuthInterceptor } from './helper/AuthInterceptor';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, HomeComponent],
@@ -18,7 +19,8 @@ import { AuthInterceptor } from './helper/AuthInterceptor';
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    NgbModule
   ],
   providers: [
     AuthenticationService,

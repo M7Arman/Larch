@@ -6,7 +6,6 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AuthenticationService {
-
   constructor(private http: HttpClient) {}
 
   login(user: User) {
@@ -28,6 +27,9 @@ export class AuthenticationService {
       );
   }
 
+  /**
+   * TODO: Testing function, remove from here
+   */
   foo(): any {
     return this.http.get(`${environment.apiUrl}/products`);
   }

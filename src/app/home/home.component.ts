@@ -1,6 +1,7 @@
 import { AuthenticationService } from './../services/AuthenticationService';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -27,20 +28,27 @@ export class HomeComponent implements OnInit {
   }
 
   public onFoo() {
-    this.authService.foo().subscribe(arg => console.log(arg));
-    const min = 1 / 4; // the time of the progress bar in minutes
-    const duration = ((min * 1000 * 60) / (100 - this.progressValue));
-    const timer = setInterval(() => {
-      this.progressValue++;
+    const min = 1 / 2; // the time of the progress bar in minutes
+    const duration = (min * 1000 * 60) / (100 - this.progressValue);
+    const source = timer(0, duration);
+    const subscribe = source.subscribe(val => {
+      this.progressValue = val;
       if (this.progressValue >= this.maxVal) {
-        clearInterval(timer);
+        subscribe.unsubscribe();
       }
-    }, duration);
+    });
+    subscribe.add(() => {
+      console.log('The end of Progress bar!');
+    });
   }
 
   private speedUp() {
     this.maxVal -= 10; // This will speed up progress bar
     console.log('this.maxVal :', this.maxVal);
+  }
+
+  private speedDown() {
+    this.progressValue--;
   }
 
   public logout() {
